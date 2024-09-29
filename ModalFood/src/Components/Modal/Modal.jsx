@@ -3,7 +3,7 @@ import './Modal.css'
 import { GiShoppingCart } from "react-icons/gi";
 
 const Modal = ({Modal ,setModal,id}) => {
-  console.log(id.id)
+  
   const [counter,setCounter] = useState(0)
   
   const handledecrement = () => {
