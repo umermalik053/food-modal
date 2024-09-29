@@ -1,0 +1,27 @@
+.navComponent{
+    background-color: rgb(32, 32, 32);
+    padding: 20px 0;
+
+    
+}
+.Navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 0 auto;
+    color: whitesmoke;
+}
+.Navbar ul{
+    display: flex;
+    list-style-type: none;
+    gap: 40px;
+    font-size: 18px;
+    
+}
+
+.Navbar .logo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
