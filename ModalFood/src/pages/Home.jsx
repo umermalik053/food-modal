@@ -4,6 +4,7 @@ import Card from '../Components/cards/Card'
 import './Home.css'
 import { foodItems } from '../utils/Constant'
 import Modal from '../Components/Modal/Modal'
+import Footer from '../Components/Footer/Footer'
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
@@ -22,8 +23,9 @@ const Home = () => {
              
         <Modal id={id} Modal={showModal} setModal={setShowModal}/>
           </div> }
+          
         </div>
-        
+        <Footer/>
     </div>
   )
 }
