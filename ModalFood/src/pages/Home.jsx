@@ -9,12 +9,28 @@ import Footer from '../Components/Footer/Footer'
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
   const [id,setId] = useState();
+  const [searchInput, setSearchInput] = useState('')
+  const [searchFilter, setSearchFilter] = useState(foodItems);
+  const filterFood = (event) => {
+    const searchValue = event.target.value.toLowerCase();
+    const searchFood = foodItems.filter(item => item.name.toLowerCase().includes(searchInput.toLowerCase()))
+    setSearchInput(searchValue);
+    if (searchValue === "") {
+      setSearchFilter(foodItems);
+    } else {
+      const filteredFood = foodItems.filter(item =>
+        item.name.toLowerCase().includes(searchValue)
+      );
+      setSearchFilter(filteredFood)
+    }
+  }
   return (
+
     <div>
-        <Navbar/>
+        <Navbar filterFood={filterFood}/>
         <div className="cardHome">
           {
-              foodItems.map((item, index) => (
+              searchFilter.map((item, index) => (
                 <Card id={id} setid={setId} Modal={showModal} setModal={setShowModal} key={index} item={item} />
               ))
           }

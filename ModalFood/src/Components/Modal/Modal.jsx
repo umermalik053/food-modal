@@ -5,11 +5,24 @@ import { GiShoppingCart } from "react-icons/gi";
 const Modal = ({Modal ,setModal,id}) => {
   
   const [counter,setCounter] = useState(0)
+  const [bariImg , setbariImg] = useState(id.images[0])
   
   const handledecrement = () => {
     if(counter > 0 )
     setCounter(counter - 1)
   }
+  // const handleImageClick = (imgSrc) => {
+  //   setbariImg(imgSrc);
+  // };
+
+  const handleImageSwap = (clickedImage, index) => {
+   
+    const newImages = [...id.images];
+    newImages[0] = clickedImage;
+    newImages[index] = bariImg; 
+    setbariImg(clickedImage);
+    id.images = newImages; 
+  };
   
   return (
     <div>
@@ -21,12 +34,19 @@ const Modal = ({Modal ,setModal,id}) => {
           <div className="modalContent">
             <div className="ModalSec1">
               <div className="bariimg">
-                <img  className='bari' src={id.images[0]} alt="" />
+                <img  className='bari' src={bariImg} alt="" />
               </div>
               <div className="chotiImg">
-                <img className='choti'  src={id.images[1]} alt="" />
-                <img className='choti'  src={id.images[2]} alt="" />
-                <img className='choti'  src={id.images[3]} alt="" />
+              {id.images.slice(1).map((img, index) => (
+                  <img
+                    key={index}
+                    className='choti'
+                    src={img}
+                    alt={`Thumbnail ${index + 1}`}
+                    onClick={() => handleImageSwap(img, index + 1)}
+                  />
+                ))}
+                
               </div>
 
             </div>
